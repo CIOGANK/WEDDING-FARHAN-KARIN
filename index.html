@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karin & Fandi - Undangan Pernikahan</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta property="og:title" content="Karin & Fandi - Undangan Pernikahan">
+    <meta property="og:description" content="Dengan memohon ridho dan rahmat Allah SWT. Kami mengundang Anda untuk hadir di pernikahan kami">
+    <meta property="og:type" content="website">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+    <div class="loading-content">
+        <div class="loading-bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+        
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #8B7355; margin: 30px 0 10px 0; font-weight: 400;">The Wedding of</h2>
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #8B7355; margin: 15px 0; font-weight: 600; line-height: 1.2;">Karin <span style="color: #D4AF37; font-style: italic; margin: 0 15px;">&</span> Fandi</h1>
+        <p style="font-family: 'Poppins', sans-serif; color: #666; font-size: 16px; margin: 5px 0;">Dear</p>
+        <p style="font-family: 'Poppins', sans-serif; color: #666; font-size: 16px; margin: 5px 0 30px 0;">Tamu Undangan</p>
+        
+        <div class="loading-heart"><i class="fas fa-heart"></i></div>
+        
+        <button id="openInvitationBtn" onclick="bukaUndanganDanPutarMusik()" style="background: linear-gradient(45deg, #8B7355, #D4AF37); color: white; border: none; padding: 15px 35px; border-radius: 50px; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600; cursor: pointer; margin: 30px 0 20px 0; box-shadow: 0 8px 25px rgba(139, 115, 85, 0.3); transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px; min-width: 200px; justify-content: center;">
+            <i class="fas fa-envelope-open"></i>
+            Buka Undangan
+        </button>
+    </div>
+</div>
+
+    <!-- Background Music Player -->
+    <div class="music-player">
+        <button id="musicToggle" class="music-btn">
+            <i class="fas fa-music"></i>
+        </button>
+        <audio id="backgroundMusic" loop preload="auto">
+            <source src="Music/Barasuara - Terbuang Dalam Waktu.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">K & F</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link">Beranda</a></li>
+                <li><a href="#couple" class="nav-link">Meet Our Couple</a></li>
+                <li><a href="#story" class="nav-link">Our Story</a></li>
+                <li><a href="#events" class="nav-link">Acara</a></li>
+                <li><a href="#dresscode" class="nav-link">Dress Code</a></li>
+                <li><a href="#rsvp" class="nav-link">RSVP</a></li>
+                <li><a href="#wishes" class="nav-link">Ucapan</a></li>
+                <li><a href="#gift" class="nav-link">Hadiah Online</a></li>
+                <li><a href="#location" class="nav-link">Lokasi</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="islamic-greeting" data-aos="fade-up">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</div>
+            <p class="hero-salam" data-aos="fade-up" data-aos-delay="200">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">Save the Date</p>
+            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="600">
+                <span class="couple-names">Karin</span>
+                <span class="hero-ampersand">&</span>
+                <span class="couple-names">Fandi</span>
+            </h1>
+            <p class="hero-date" data-aos="fade-up" data-aos-delay="800">Sabtu, 07 Februari 2026</p>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown" data-aos="fade-up" data-aos-delay="1000">
+                <div class="countdown-item">
+                    <span id="days">0</span>
+                    <label>Hari</label>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">0</span>
+                    <label>Jam</label>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">0</span>
+                    <label>Menit</label>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">0</span>
+                    <label>Detik</label>
+                </div>
+            </div>
+
+            <div class="scroll-down" data-aos="fade-up" data-aos-delay="1200">
+                <a href="#couple" class="scroll-btn">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Couple Section -->
+    <section id="couple" class="couple-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Meet Our Couple</h2>
+                <p>Dua hati yang bersatu dalam cinta dan ridho Allah SWT</p>
+            </div>
+            
+            <div class="couple-container">
+                <div class="bride" data-aos="fade-right">
+                    <div class="couple-title">THE BRIDE</div>
+                    <div class="couple-card">
+                        <div class="couple-photo">
+                            <div class="real-photo-placeholder bride-photo">
+                                <img src="Images/STUDIOAJABRIDE11.JPG" alt="Karina Dwi Utari - The Bride" class="dresscode-photo-img">
+                                <div class="photo-overlay">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="couple-info">
+                            <h3>Karina Dwi Utari</h3>
+                            <div class="nickname">"Karin"</div>
+                            <div class="couple-desc">Putri kedua dari</div>
+                            <div class="couple-parents">Bapak Husni Tamrin dan Ibu Sri Sundari</div>
+                            <div class="couple-instagram">
+                                <a href="https://instagram.com/krnutr" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>@krnutr</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="couple-divider" data-aos="zoom-in">
+                    <i class="fas fa-heart"></i>
+                </div>
+
+                <div class="groom" data-aos="fade-left">
+                    <div class="couple-title">THE GROOM</div>
+                    <div class="couple-card">
+                        <div class="couple-photo">
+                            <!-- REAL GROOM PHOTO PLACEHOLDER - Replace with actual groom photo -->
+                            <div class="real-photo-placeholder groom-photo">
+                                <img src="Images/STUDIOAJAGROOM.JPG" alt="Contoh Batik untuk Pria" class="dresscode-photo-img">
+                                <div class="photo-overlay">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="couple-info">
+                            <h3>Farhan Affandi</h3>
+                            <div class="nickname">"Fandi/Farhan"</div>
+                            <div class="couple-desc">Putra pertama dari</div>
+                            <div class="couple-parents">Bapak Watrizal Chaniago dan Ibu Tengku Safrida S.Pd.</div>
+                            <div class="couple-instagram">
+                                <a href="https://instagram.com/farhanaffand" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>@farhanaffand</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="story-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Our Story</h2>
+                <p>Perjalanan cinta yang menyatukan kami</p>
+            </div>
+            
+            <div class="story-content" data-aos="fade-up" data-aos-delay="200">
+                <div class="story-text">
+                    <p>Semua berawal dari sebuah DM Instagram di Februari 2022. Dari obrolan singkat yang awalnya biasa saja, tanpa terasa jadi rutinitas sehari-hari. Hingga akhirnya, di awal April, keberanian untuk bertemu pertama kali muncul. Namun pertemuan itu bukan langsung dengan Karina Dwi Utari, melainkan dengan kedua orang tuanya terlebih dahulu. Setelah mendapat izin dari mereka, barulah saya benar-benar dipertemukan dengan Karin untuk pertama kalinya.</p>
+                    
+                    <p>Sejak saat itu, perjalanan kami nggak selalu mulus-ada tawa, ada perdebatan kecil, ada juga momen saling diam. Tapi justru di situlah kami belajar: bahwa hubungan bukan tentang mencari yang sempurna, melainkan tentang menerima kekurangan masing-masing dan menjadikannya kekuatan.</p>
+                    
+                    <p>Dari dua orang asing yang hanya saling menyapa di dunia maya, kini berubah jadi dua hati yang siap jalan searah. Perjalanan cinta yang menyatukan kami sampai di titik terindah: melangkah ke babak baru bersama, dengan harapan dan doa agar cerita ini terus berlanjut penuh kebahagiaan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section - CHANGED TO 2 COLUMNS -->
+    <section id="events" class="events-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Acara</h2>
+                <p>Dengan memohon ridho dan rahmat Allah SWT</p>
+                <p class="section-opening">Kami bermaksud menyelenggarakan resepsi pernikahan putra-putri kami yang insyaallah akan diselenggarakan :</p>
+            </div>
+
+            <div class="events-container">
+                <!-- Akad Event - Left Column -->
+                <div class="event-card" data-aos="fade-up" data-aos-delay="200">
+                     <div class="event-icon">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <div class="event-details">
+                        <h3>Akad</h3>
+                        <p class="event-time">Pukul 09.00 WIB - Selesai</p>
+                        <p class="event-date">Sabtu, 07 Februari 2026</p>
+                        <p class="event-venue">Kediaman Keluarga</p>
+                        <p class="event-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Jl. Pelajar No.93A, Teladan Tim., Kec. Medan Kota, Kota Medan, Sumatera Utara 20217<br>
+                            (di samping Toko Agung)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Resepsi Event - Right Column -->
+                <div class="event-card" data-aos="fade-up" data-aos-delay="400">
+                     <div class="event-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <div class="event-details">
+                        <h3>Resepsi Pernikahan</h3>
+                        <p class="event-time">Pukul 11.00 WIB - Selesai</p>
+                        <p class="event-date">Sabtu, 07 Februari 2026</p>
+                        <p class="event-venue">Kediaman Keluarga</p>
+                        <p class="event-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Jl. Pelajar No.93A, Teladan Tim., Kec. Medan Kota, Kota Medan, Sumatera Utara 20217<br>
+                            (di samping Toko Agung)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dress Code Section -->
+    <section id="dresscode" class="dresscode-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Dress Code Theme</h2>
+                <p>Mari rayakan hari bahagia kami dengan busana yang tepat</p>
+            </div>
+            
+            <div class="dresscode-container">
+                <div class="dresscode-card male-dresscode" data-aos="fade-up" data-aos-delay="200">
+                    <div class="dresscode-photo">
+                        <!-- BATIK PHOTO PLACEHOLDER - Replace with batik illustration/photo -->
+                        <div class="dresscode-photo-placeholder male-batik-photo">
+                            <img src="DressTheme/BATIKYUK11.jpg" alt="Contoh Berkain untuk Wanita" class="dresscode-photo-img">
+                            <div class="dresscode-overlay">
+                            </div>
+                        </div>
+                    </div>
+                    <h3>BATIK YUK</h3>
+                    <p class="dresscode-target">Untuk Tamu Pria</p>
+                    <p class="dresscode-description">Silakan gunakan batik atau kemeja batik untuk meramaikan acara kami</p>
+                </div>
+
+                <div class="dresscode-card female-dresscode" data-aos="fade-up" data-aos-delay="400">
+                    <div class="dresscode-photo">
+                        <!-- BERKAIN PHOTO PLACEHOLDER - Replace with kebaya illustration/photo -->
+                        <div class="dresscode-photo-placeholder female-berkain-photo">
+                            <img src="DressTheme/BERKAIN11.jpg" alt="Contoh Berkain untuk Wanita" class="dresscode-photo-img">
+                            <div class="dresscode-overlay">
+                            </div>
+                        </div>
+                    </div>
+                    <h3>BERKAIN</h3>
+                    <p class="dresscode-target">Untuk Tamu Wanita</p>
+                    <p class="dresscode-description">Silakan gunakan kebaya, kain tradisional, atau Pakaian terbaik yang nyaman</p>
+                </div>
+            </div>
+            
+            <div class="dresscode-note" data-aos="fade-up" data-aos-delay="600">
+                <i class="fas fa-info-circle"></i>
+                <em>Dresscode bukan paksaan, hanya sekedar ajakan.</em>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rsvp-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>RSVP</h2>
+                <p>Konfirmasi kehadiran Anda</p>
+            </div>
+
+            <div class="rsvp-form-container" data-aos="fade-up" data-aos-delay="200">
+                <form id="rsvpForm" class="rsvp-form">
+                    <div class="form-group">
+                        <label for="rsvpName" class="form-label">Nama Lengkap</label>
+                        <input type="text" id="rsvpName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rsvpAttendance" class="form-label">Kehadiran</label>
+                        <select id="rsvpAttendance" class="form-control" required>
+                            <option value="">Pilih kehadiran</option>
+                            <option value="Hadir">Hadir</option>
+                            <option value="Tidak Hadir">Tidak Hadir</option>
+                            <option value="Masih Ragu">Masih Ragu</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rsvpMessage" class="form-label">Pesan (Opsional)</label>
+                        <textarea id="rsvpMessage" class="form-control" rows="3" placeholder="Pesan untuk mempelai..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary btn--full-width">Kirim RSVP</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishes Section -->
+    <section id="wishes" class="wishes-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Doa & Ucapan</h2>
+                <p>Kirimkan ucapan dan doa terbaik untuk kami</p>
+            </div>
+
+            <div class="wishes-container">
+                <div class="wishes-form-container" data-aos="fade-right">
+                    <form id="wishesForm" class="wishes-form">
+                        <div class="form-group">
+                            <label for="wishesName" class="form-label">Nama</label>
+                            <input type="text" id="wishesName" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="wishesMessage" class="form-label">Ucapan & Doa</label>
+                            <textarea id="wishesMessage" class="form-control" rows="4" placeholder="Tulis ucapan dan doa terbaik untuk kami..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--full-width">Kirim Ucapan</button>
+                    </form>
+                </div>
+
+                <div class="wishes-display" data-aos="fade-left">
+                    <h3>Ucapan Terbaru</h3>
+                    <div id="wishesList" class="wishes-list">
+                        <!-- Wishes will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Online Section -->
+    <section id="gift" class="gift-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Hadiah Online</h2>
+                <p>Untuk kemudahan Anda yang ingin memberikan kado</p>
+            </div>
+
+            <div class="gift-container">
+                <div class="gift-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gift-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Transfer Bank</h3>
+                    <div class="account-details">
+                        <div class="account-item">
+                            <div class="bank-name">Dana</div>
+                            <div class="account-number">0852 1718 2195</div>
+                            <div class="account-name">a.n Farhan Affandi</div>
+                            <button class="copy-btn" data-account="0852 1718 2195">
+                                <i class="fas fa-copy"></i> Salin
+                            </button>
+                        </div>
+                        <div class="account-item">
+                            <div class="bank-name">Seabank</div>
+                            <div class="account-number">901861400204</div>
+                            <div class="account-name">a.n Karina Dwi Utari</div>
+                            <button class="copy-btn" data-account="901861400204">
+                                <i class="fas fa-copy"></i> Salin
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Lokasi</h2>
+                <p>Tempat berlangsungnya acara pernikahan</p>
+            </div>
+
+            <div class="location-content">
+                <div class="location-info" data-aos="fade-right">
+                    <div class="location-card">
+                        <h3>Kediaman Keluarga</h3>
+                        <p class="location-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Jl. Pelajar No.93A, Teladan Tim., Kec. Medan Kota, Kota Medan, Sumatera Utara 20217<br>
+                            (di samping Toko Agung)
+                        </p>
+                        <a href="https://maps.app.goo.gl/2xRw8X97Ro52ihCSA" target="_blank" class="btn btn--primary">
+                            <i class="fas fa-directions"></i> Buka di Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <div class="location-map" data-aos="fade-left">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.76226405248354!2d98.70153645647925!3d3.5648858063862927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031305f2ead7085%3A0x2ff36136b8ef2fc2!2sToko%20Agung%20menjual%20segala%20Perlengkapan%20pramuka%2Cpaskibra%2Cdokter%20kecil%20dan%20perlengkapan%20sekolah!5e0!3m2!1sid!2sid!4v1757151618267!5m2!1sid!2sid"
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content" data-aos="fade-up">
+                <h3>Hormat Kami dari keluarga besar dan kedua mempelai</h3>
+                <p>Terima kasih atas doa dan restu yang tulus. Kehadiran Anda akan menjadi kebahagiaan yang tak ternilai bagi kami.</p>
+                <div class="footer-couple">with love, Karin & Fandi</div>
+                <p class="footer-copyright">© 2026 Karin & Fandi Wedding. Made with ♥</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Terima Kasih!</h3>
+            <p id="successMessage">Pesan Anda telah berhasil dikirim.</p>
+            <button class="btn btn--primary" onclick="closeModal()">Tutup</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="app.js"></script>
+    <script>
+// Ganti loading screen setelah halaman siap
+document.addEventListener('DOMContentLoaded', function() {
+    // Cari loading screen yang ada
+    const loadingScreen = document.getElementById('loading');
+    
+    if (loadingScreen) {
+        // GANTI ISI LOADING SCREEN LANGSUNG DENGAN JAVASCRIPT
+        loadingScreen.innerHTML = `
+            <div class="loading-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; padding: 20px; box-sizing: border-box;">
+                
+                <!-- Bismillah -->
+                <div style="font-family: 'Amiri', serif; font-size: 24px; color: #8B7355; margin-bottom: 40px; text-align: center;">
+                    بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
+                </div>
+                
+                <!-- The Wedding of -->
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #8B7355; margin: 0 0 15px 0; font-weight: 400;">
+                    The Wedding of
+                </h3>
+                
+                <!-- Nama Pengantin -->
+                <h1 style="font-family: 'Playfair Display', serif; font-size: 3rem; color: #8B7355; margin: 15px 0 25px 0; font-weight: 600; line-height: 1.2;">
+                    Karin <span style="color: #D4AF37; font-style: italic; margin: 0 15px;">&</span> Fandi
+                </h1>
+                
+                <!-- Dear -->
+                <p style="font-family: 'Poppins', sans-serif; color: #666; font-size: 16px; margin: 0 0 5px 0;">
+                    Dear
+                </p>
+                <p style="font-family: 'Poppins', sans-serif; color: #666; font-size: 16px; margin: 0 0 40px 0; font-weight: 500;">
+                    Tamu Undangan
+                </p>
+                
+                <!-- Heart Icon -->
+                <div style="color: #8B7355; font-size: 48px; margin: 20px 0 40px 0;">
+                    ♥
+                </div>
+                
+                <!-- TOMBOL BUKA UNDANGAN -->
+                <button onclick="bukaUndanganMusik()" id="btnBukaUndangan" style="
+                    background: linear-gradient(45deg, #8B7355, #D4AF37); 
+                    color: white; 
+                    border: none; 
+                    padding: 15px 35px; 
+                    border-radius: 50px; 
+                    font-family: 'Poppins', sans-serif; 
+                    font-size: 16px; 
+                    font-weight: 600; 
+                    cursor: pointer; 
+                    box-shadow: 0 8px 25px rgba(139, 115, 85, 0.3); 
+                    transition: all 0.3s ease; 
+                    display: inline-flex; 
+                    align-items: center; 
+                    gap: 10px; 
+                    min-width: 200px; 
+                    justify-content: center;
+                ">
+                    <span style="font-size: 18px;">📧</span>
+                    Buka Undangan
+                </button>
+                
+            </div>
+        `;
+        
+        console.log('✅ Loading screen dengan tombol "Buka Undangan" siap!');
+    }
+});
+
+// Function untuk membuka undangan dan memutar musik
+function bukaUndanganMusik() {
+    const button = document.getElementById('btnBukaUndangan');
+    const loadingScreen = document.getElementById('loading');
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    
+    // Ubah tombol jadi loading
+    if (button) {
+        button.innerHTML = '<span style="display: inline-block; animation: spin 1s linear infinite;">⟳</span> Membuka Undangan...';
+        button.disabled = true;
+        button.style.opacity = '0.7';
+    }
+    
+    console.log('🎵 Memulai proses buka undangan + musik...');
+    
+    // MULAI MUSIK SEKARANG
+    if (backgroundMusic) {
+        backgroundMusic.volume = 0.3;
+        backgroundMusic.currentTime = 0;
+        
+        // Coba putar musik
+        const playPromise = backgroundMusic.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                console.log('✅ Musik berhasil diputar!');
+                
+                // Update tombol musik toggle
+                if (musicToggle) {
+                    musicToggle.classList.add('playing');
+                    musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+                    musicToggle.title = 'Jeda Musik';
+                }
+                
+            }).catch(error => {
+                console.log('⚠️ Musik gagal diputar:', error);
+                alert('Musik tidak dapat diputar otomatis. Silakan klik tombol musik setelah undangan terbuka.');
+            });
+        } else {
+            // Fallback
+            try {
+                backgroundMusic.play();
+                console.log('✅ Musik diputar dengan fallback method!');
+                if (musicToggle) {
+                    musicToggle.classList.add('playing');
+                    musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+            } catch (error) {
+                console.log('❌ Semua metode musik gagal:', error);
+            }
+        }
+    } else {
+        console.log('❌ Element backgroundMusic tidak ditemukan!');
+    }
+    
+    // Hilangkan loading screen
+    setTimeout(() => {
+        if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                console.log('✅ Loading screen disembunyikan - undangan siap!');
+            }, 500);
+        }
+    }, 1500);
+}
+
+// CSS Animation untuk loading button
+const style = document.createElement('style');
+style.textContent = `
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+`;
+document.head.appendChild(style);
+</script>   
+</body>
+</html>
