@@ -183,7 +183,7 @@ class WeddingApp {
                     this.isMusicPlaying = true;
                     musicToggle.classList.add('playing');
                     musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
-                    musicToggle.title = 'Jeda Musik: Barasuara - Terbuang Dalam Waktu';
+                    musicToggle.title = 'Jeda Musik: Dengarkan Dia - Bersenyawa';
                     
                     
                     console.log('🎵 Autoplay successful: Music started automatically');
@@ -192,7 +192,7 @@ class WeddingApp {
                     console.log('Autoplay prevented by browser:', error);
                     musicToggle.classList.remove('playing');
                     musicToggle.innerHTML = '<i class="fas fa-music"></i>';
-                    musicToggle.title = 'Klik untuk putar musik: Barasuara - Terbuang Dalam Waktu';
+                    musicToggle.title = 'Klik untuk putar musik: Dengarkan Dia - Bersenyawa';
                     this.isMusicPlaying = false;
                 });
             }
@@ -540,7 +540,7 @@ The photos will automatically replace the placeholders.
                     backgroundMusic.pause();
                     musicToggle.classList.remove('playing');
                     musicToggle.innerHTML = '<i class="fas fa-music"></i>';
-                    musicToggle.title = 'Putar Musik: Barasuara - Terbuang Dalam Waktu';
+                    musicToggle.title = 'Putar Musik: Dengarkan Dia - Bersenyawa';
                     this.isMusicPlaying = false;    
                 } else {
                     // Autoplay setelah loading selesai
@@ -554,7 +554,7 @@ The photos will automatically replace the placeholders.
                                       backgroundMusic.volume = 0.4;
                                       musicToggle.classList.add('playing');
                                       musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
-                                      musicToggle.title = 'Putar Musik: Barasuara - Terbuang Dalam Waktu';
+                                      musicToggle.title = 'Putar Musik: Dengarkan Dia - Bersenyawa';
                                       this.isMusicPlaying = true;
                                       this.showMessage('🎵 Musik diputar otomatis');
                                   }).catch(() => {
@@ -577,7 +577,7 @@ The photos will automatically replace the placeholders.
                             musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
                             musicToggle.title = 'Jeda Musik';
                             this.isMusicPlaying = true;
-                            this.showMessage('♪ Memutar: Barasuara - Terbuang Dalam Waktu');
+                            this.showMessage('♪ Memutar: Dengarkan Dia - Bersenyawa');
                         }).catch((error) => {
                             console.log('Audio playback failed:', error);
                             musicToggle.innerHTML = '<i class="fas fa-music"></i>';
@@ -592,7 +592,7 @@ The photos will automatically replace the placeholders.
             backgroundMusic.addEventListener('ended', () => {
                 musicToggle.classList.remove('playing');
                 musicToggle.innerHTML = '<i class="fas fa-music"></i>';
-                musicToggle.title = 'Putar Musik: Barasuara - Terbuang Dalam Waktu';
+                musicToggle.title = 'Putar Musik: Barasuara -  Dengarkan Dia - Bersenyawa';
                 this.isMusicPlaying = false;
             });
 
@@ -609,7 +609,7 @@ The photos will automatically replace the placeholders.
 
             backgroundMusic.addEventListener('canplay', () => {
                 console.log('Audio ready to play');
-                musicToggle.title = 'Putar Musik: Barasuara - Terbuang Dalam Waktu';
+                musicToggle.title = 'Putar Musik: Barasuara - Dengarkan Dia - Bersenyawa';
             });
 
             // Mobile-specific audio handling
@@ -630,7 +630,7 @@ The photos will automatically replace the placeholders.
             });
 
             // Set initial tooltip
-            musicToggle.title = 'Putar Musik: Barasuara - Terbuang Dalam Waktu';
+            musicToggle.title = 'Putar Musik: Barasuara - Dengarkan Dia - Bersenyawa';
         }
     }
 
@@ -1103,8 +1103,71 @@ function closeModal() {
     }
 }
 
+// Global function for opening invitation and playing music
+function bukaUndanganDanPutarMusik() {
+    console.log('🎉 Tombol Buka Undangan diklik');
+    
+    // Sembunyikan loading screen
+    const loadingScreen = document.getElementById('loading');
+    if (loadingScreen) {
+        loadingScreen.classList.add('fade-out');
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 500);
+    }
+    
+    // Tunggu sedikit sebelum memutar musik untuk memastikan user interaction terdeteksi
+    setTimeout(() => {
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        
+        if (backgroundMusic && musicToggle) {
+            // Set volume
+            backgroundMusic.volume = 0.4;
+            
+            // Tampilkan loading state pada tombol musik
+            musicToggle.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            musicToggle.title = 'Memuat musik...';
+            
+            // Coba putar musik
+            const playPromise = backgroundMusic.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Musik berhasil diputar
+                    console.log('🎵 Musik berhasil diputar otomatis');
+                    musicToggle.classList.add('playing');
+                    musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+                    musicToggle.title = 'Jeda Musik: Dengarkan Dia - Bersenyawa';
+                    
+                    // Update status di weddingApp jika ada
+                    if (window.weddingApp) {
+                        window.weddingApp.isMusicPlaying = true;
+                        window.weddingApp.autoplayAttempted = true;
+                    }
+                }).catch((error) => {
+                    // Autoplay gagal (browser memblokir)
+                    console.log('⚠️ Autoplay diblokir browser:', error);
+                    musicToggle.classList.remove('playing');
+                    musicToggle.innerHTML = '<i class="fas fa-music"></i>';
+                    musicToggle.title = 'Klik untuk putar musik: Dengarkan Dia - Bersenyawa';
+                    
+                    // Update status di weddingApp jika ada
+                    if (window.weddingApp) {
+                        window.weddingApp.isMusicPlaying = false;
+                        window.weddingApp.autoplayAttempted = true;
+                    }
+                });
+            }
+        }
+    }, 300);
+}
+
 // Initialize the app
 const weddingApp = new WeddingApp();
+
+// Expose weddingApp to global scope for access from other functions
+window.weddingApp = weddingApp;
 
 // Enhanced initialization with autoplay support
 document.addEventListener('DOMContentLoaded', function() {
@@ -1260,12 +1323,21 @@ document.addEventListener('click', function(e) {
 
 // Enhanced mobile-specific event listeners
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    // Prevent iOS bounce effect
+    // Prevent iOS bounce effect - FIXED: Jangan prevent pada button dan link
     document.body.addEventListener('touchstart', function(e) {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        // Izinkan touch pada input, textarea, button, dan link
+        if (e.target.tagName === 'INPUT' || 
+            e.target.tagName === 'TEXTAREA' || 
+            e.target.tagName === 'BUTTON' || 
+            e.target.tagName === 'A' ||
+            e.target.closest('button') ||
+            e.target.closest('a')) {
             return;
         }
-        e.preventDefault();
+        // Hanya prevent pada body untuk mencegah bounce effect
+        if (e.target === document.body) {
+            e.preventDefault();
+        }
     }, { passive: false });
 
     // Improve mobile scrolling performance
