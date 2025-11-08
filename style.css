@@ -1268,10 +1268,10 @@ select.form-control {
 
 .couple-info h3 {
     font-family: 'Sunydale','Playfair Display', serif;
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-4xl);
     color: #4A3D2A;
     margin-bottom: var(--space-8);
-    font-weight: 600;
+    font-weight: 500;
 }
 
 /* NEW: Nickname Styling */
