@@ -1268,7 +1268,7 @@ select.form-control {
 
 .couple-info h3 {
     font-family: 'Sunydale','Playfair Display', serif;
-    font-size: 5rem;
+    font-size: var(--font-size-10xl);
     color: #4A3D2A;
     margin-bottom: var(--space-8);
     font-weight: 500;
