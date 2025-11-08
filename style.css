@@ -1022,7 +1022,7 @@ select.form-control {
     margin: 0 var(--space-16);
     display: inline-block;
     vertical-align: middle;
-    transform: translateY(20px);
+    transform: translateY(17px);
 }
 
 .hero-date {
