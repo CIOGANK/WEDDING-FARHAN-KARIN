@@ -1271,7 +1271,7 @@ select.form-control {
     font-size: var(--font-size-3xl);
     color: #4A3D2A;
     margin-bottom: var(--space-8);
-    font-weight: 800;
+    font-weight: 1000;
 }
 
 /* NEW: Nickname Styling */
