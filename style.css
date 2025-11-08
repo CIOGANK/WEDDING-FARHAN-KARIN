@@ -1004,7 +1004,7 @@ select.form-control {
 .hero-title {
     font-family: 'Sunydale', 'Playfair Display', serif;
     font-size: clamp(5rem, 9vw, 6rem);
-    font-weight: 3000s;
+    font-weight: 1000s;
     line-height: 1.0;
     margin-bottom: var(--space-20);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
