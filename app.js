@@ -930,33 +930,7 @@ The photos will automatically replace the placeholders.
     }
 
     loadExistingWishes() {
-        const defaultWishes = [
-            {
-                name: "Keluarga Besar",
-                message: "Barakallahu lakuma wa baraka alaikuma wa jama'a bainakuma fi khair. Semoga menjadi keluarga yang sakinah, mawaddah, warahmah.",
-                timestamp: "15 Januari 2026"
-            },
-            {
-                name: "Teman Dekat", 
-                message: "Selamat menempuh hidup baru Karin & Fandi! Semoga pernikahan kalian diberkahi Allah SWT dan menjadi keluarga yang harmonis. Bahagia selalu ya!",
-                timestamp: "20 Januari 2026"
-            },
-            {
-                name: "Sahabat Kuliah",
-                message: "Dari yang dulunya saling kenal di Instagram sampai sekarang menikah! So happy for both of you. Semoga langgeng sampai kakek nenek ya!",
-                timestamp: "25 Januari 2026"
-            },
-            {
-                name: "Tetangga",
-                message: "Selamat untuk Karin dan Fandi! Semoga menjadi pasangan yang selalu saling melengkapi dan bahagia dunia akhirat. Amin ya rabbal alamin.",
-                timestamp: "28 Januari 2026"
-            },
-            {
-                name: "Rekan Kerja",
-                message: "Congratulations Fandi & Karin! Wishing you both a lifetime of love and happiness. May your marriage be blessed with joy, peace, and prosperity.",
-                timestamp: "1 Februari 2026"
-            }
-        ];
+        const defaultWishes = [];
 
         try {
             const savedWishes = JSON.parse(localStorage.getItem('karin-fandi-wishes') || '[]');
