@@ -915,45 +915,87 @@ The photos will automatically replace the placeholders.
         return true;
     }
 
-    saveWish(data) {
+    async saveWish(data) {
         try {
+            // Try to save to Firebase first
+            if (window.db) {
+                await window.db.collection('wishes').add({
+                    name: data.name,
+                    message: data.message,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    displayDate: data.timestamp
+                });
+                console.log('✅ Wish saved to Firebase!');
+            } else {
+                throw new Error('Firebase not initialized');
+            }
+        } catch (error) {
+            console.log('⚠️ Firebase save failed, using localStorage:', error);
+            // Fallback to localStorage
             const existingWishes = JSON.parse(localStorage.getItem('karin-fandi-wishes') || '[]');
             existingWishes.unshift(data);
-            // Keep only last 50 wishes for performance
             if (existingWishes.length > 50) {
                 existingWishes.splice(50);
             }
             localStorage.setItem('karin-fandi-wishes', JSON.stringify(existingWishes));
-        } catch (error) {
-            console.log('Error saving wish:', error);
         }
     }
 
     loadExistingWishes() {
-        const defaultWishes = [];
-
+        const wishesList = document.getElementById('wishesList');
+        
         try {
-            const savedWishes = JSON.parse(localStorage.getItem('karin-fandi-wishes') || '[]');
-            const allWishes = [...savedWishes, ...defaultWishes];
-
-            // Clear existing wishes first
-            const wishesList = document.getElementById('wishesList');
-            if (wishesList) {
-                wishesList.innerHTML = '';
+            // Try to use Firebase real-time listener
+            if (window.db) {
+                console.log('✅ Loading wishes from Firebase...');
+                
+                window.db.collection('wishes')
+                    .orderBy('timestamp', 'desc')
+                    .limit(50)
+                    .onSnapshot((snapshot) => {
+                        // Clear existing wishes
+                        if (wishesList) {
+                            wishesList.innerHTML = '';
+                        }
+                        
+                        snapshot.forEach((doc) => {
+                            const wish = doc.data();
+                            this.displayWish({
+                                name: wish.name,
+                                message: wish.message,
+                                timestamp: wish.displayDate || new Date(wish.timestamp?.toDate()).toLocaleDateString('id-ID', {
+                                    day: 'numeric',
+                                    month: 'long',
+                                    year: 'numeric'
+                                })
+                            });
+                        });
+                        
+                        console.log('✅ Wishes loaded from Firebase!');
+                    }, (error) => {
+                        console.log('⚠️ Firebase listener error:', error);
+                        this.loadWishesFromLocalStorage();
+                    });
+            } else {
+                throw new Error('Firebase not initialized');
             }
-
-            allWishes.forEach(wish => {
-                this.displayWish(wish);
-            });
         } catch (error) {
-            const wishesList = document.getElementById('wishesList');
-            if (wishesList) {
-                wishesList.innerHTML = '';
-            }
-            defaultWishes.forEach(wish => {
-                this.displayWish(wish);
-            });
+            console.log('⚠️ Firebase not available, using localStorage:', error);
+            this.loadWishesFromLocalStorage();
         }
+    }
+    
+    loadWishesFromLocalStorage() {
+        const wishesList = document.getElementById('wishesList');
+        const savedWishes = JSON.parse(localStorage.getItem('karin-fandi-wishes') || '[]');
+        
+        if (wishesList) {
+            wishesList.innerHTML = '';
+        }
+        
+        savedWishes.forEach(wish => {
+            this.displayWish(wish);
+        });
     }
 
     displayWish(wish) {
