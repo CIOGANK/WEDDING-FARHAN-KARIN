@@ -1645,16 +1645,26 @@ select.form-control {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-color: var(--color-surface);
+    background-color: #FFFFFF !important;
     border: 2px solid #E8E5E1;
     border-radius: var(--radius-base);
     padding: var(--space-12) var(--space-16);
     font-size: var(--font-size-md);
-    color: #4A3D2A;
+    color: #4A3D2A !important;
     width: 100%;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     font-weight: 500;
     /* Force light mode on iPhone/Safari dark mode */
+    color-scheme: light !important;
+    -webkit-text-fill-color: #4A3D2A !important;
+}
+
+/* Force white background on all inputs, selects, and textareas */
+input,
+select,
+textarea {
+    background-color: #FFFFFF !important;
+    color: #4A3D2A !important;
     color-scheme: light !important;
     -webkit-text-fill-color: #4A3D2A !important;
 }
