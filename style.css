@@ -1654,6 +1654,9 @@ select.form-control {
     width: 100%;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     font-weight: 500;
+    /* Force light mode on iPhone/Safari dark mode */
+    color-scheme: light !important;
+    -webkit-text-fill-color: #4A3D2A !important;
 }
 
 select.form-control {
