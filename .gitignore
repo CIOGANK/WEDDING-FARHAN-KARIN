@@ -1,0 +1,13 @@
+# Firebase Config (jangan upload ke GitHub!)
+firebase-config.js
+
+# Environment variables
+.env
+.env.local
+
+# Node modules
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
