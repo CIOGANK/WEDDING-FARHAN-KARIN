@@ -1,6 +1,3 @@
-# Firebase Config (jangan upload ke GitHub!)
-firebase-config.js
-
 # Environment variables
 .env
 .env.local
@@ -11,3 +8,4 @@ node_modules/
 # OS files
 .DS_Store
 Thumbs.db
+
